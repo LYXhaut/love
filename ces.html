@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当前时间</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #time {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>当前时间</h1>
+    <div id="time"></div>
+
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // 添加前导零，保证两位数
+            month = (month < 10) ? '0' + month : month;
+            day = (day < 10) ? '0' + day : day;
+            hours = (hours < 10) ? '0' + hours : hours;
+            minutes = (minutes < 10) ? '0' + minutes : minutes;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+            var timeString = year + '年' + month + '月' + day + '日 ' + hours + ':' + minutes + ':' + seconds + ' 北京时间';
+            document.getElementById('time').textContent = timeString;
+        }
+
+        updateTime(); // 页面加载时立即显示时间
+        setInterval(updateTime, 1000); // 每秒更新一次时间
+    </script>
+</body>
+</html>
